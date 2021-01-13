@@ -1,0 +1,57 @@
+{
+  "name": "wla",
+  "version": "0.0.3",
+  "description": "使用淘宝 NPM 镜像加速包管理工具安装依赖的速度",
+  "keywords": [
+    "npm",
+    "yarn",
+    "pnpm",
+    "cnpm",
+    "package-manager",
+    "taobao"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "wlfcss"
+  },
+  "main": "lib/run.js",
+  "bin": {
+    "wla": "lib/run.js",
+    "wnpm": "lib/alias/npm.js",
+    "wnpx": "lib/alias/npx.js",
+    "wnvm": "lib/alias/nvm.js",
+    "wpm": "lib/alias/pnpm.js",
+    "wpx": "lib/alias/pnpx.js",
+    "wyn": "lib/alias/yarn.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "shx rm -rf lib && npm run copyBin && tsc -p tsconfig.build.json",
+    "copyBin": "shx mkdir -p lib/bin && shx cp 'src/bin/*' lib/bin/",
+    "dev": "shx rm -rf lib && npm run copyBin && tsc -p tsconfig.build.json -w",
+    "prepublishOnly": "npm run build",
+    "release": "standard-version -a && git push --follow-tags origin master && npm publish",
+    "test": "jest"
+  },
+  "dependencies": {
+    "execa": "^4.0.2",
+    "get-port": "^5.1.1",
+    "got": "^11.8.1",
+    "signal-exit": "^3.0.3",
+    "tslib": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/signal-exit": "^3.0.0",
+    "codecov": "^3.7.2",
+    "haoma": "^1.13.0",
+    "shx": "^0.3.3",
+    "standard-version": "^7.1.0",
+    "tempy": "^0.5.0",
+    "typescript": "^3.9.5"
+  },
+  "engines": {
+    "node": ">=10.19.0"
+  }
+}

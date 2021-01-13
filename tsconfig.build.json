@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2017",
+    "module": "CommonJS",
+    "declaration": true,
+    "importHelpers": true,
+    "outDir": "./lib"
+  },
+  "include": ["src"],
+  "exclude": ["**/*.test.*"]
+}
